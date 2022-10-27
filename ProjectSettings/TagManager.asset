@@ -7,6 +7,7 @@ TagManager:
   - ship
   - asteroid
   - Soul
+  - Zombie
   layers:
   - Default
   - TransparentFX
