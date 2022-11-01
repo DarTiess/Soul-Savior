@@ -6,21 +6,38 @@ using UnityEngine;
 public class MageController : MonoBehaviour
 {
     MageAnimator mageAnimator;
-    [SerializeField] private List<SoulsType> soulsList = new List<SoulsType>();
+    [SerializeField] private List<Soul> soulsList = new List<Soul>();
+
+    [SerializeField] private List<Transform> soulsPlaces = new List<Transform>();
+    int indexPlaces = 0;
     // Start is called before the first frame update
     void Start()
     {
         mageAnimator = GetComponent<MageAnimator>();
     }
-    private void OnTriggerEnter(Collider other)
+ 
+    public void StoreSouls(Soul soul)
     {
-        if (other.gameObject.CompareTag("Soul"))
-        {
-            StoreSouls(other.gameObject.GetComponent<Soul>().GetTypeOfSoul());
-        }
+      
+            soulsList.Add(soul);
+            soul.gameObject.transform.position = soulsPlaces[indexPlaces].position;
+            soul.gameObject.transform.parent = null;
+            soul.gameObject.SetActive(false);
+            indexPlaces++;
+        
+     
+    } 
+    
+    public void LostSouls(Soul soul)
+    {
+        soulsList.Remove(soul);
     }
-    public void StoreSouls(SoulsType soulsType)
+
+    public void ClickedOnMage()
     {
-        soulsList.Add(soulsType);
+        foreach(Soul soul in soulsList)
+        {
+            soul.gameObject.SetActive(true);
+        }
     }
 }

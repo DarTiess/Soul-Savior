@@ -8,6 +8,7 @@ TagManager:
   - asteroid
   - Soul
   - Zombie
+  - Mage
   layers:
   - Default
   - TransparentFX

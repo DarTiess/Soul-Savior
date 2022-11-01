@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 public class CanvasController : MonoBehaviour
@@ -10,6 +11,7 @@ public class CanvasController : MonoBehaviour
     [SerializeField] private GameObject inGame;
     [SerializeField] private GameObject win;
     [SerializeField] private GameObject lost;
+    [SerializeField] private Text Level;
 
     GameManager gameManager;
 
@@ -26,6 +28,7 @@ public class CanvasController : MonoBehaviour
     {
         FalsePanels();
         mainMenu.SetActive(true);
+        Level.text = "Level "+gameManager.loadScene.numScene.ToString();
     }
 
     private void OnLevelStart()
