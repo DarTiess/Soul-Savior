@@ -19,14 +19,18 @@ public class LoadScene : ScriptableObject
         {
             numScene = 1;
         }
-       
-            Loading();
+        if (numScene > sceneNames.Count)
+        {
+            numScene =1;
+        }
+        Loading();
         
 
     }
 
     public void LoadNextLevel()
     {
+       
         numScene += 1;
         Loading();
     }
@@ -37,7 +41,10 @@ public class LoadScene : ScriptableObject
         if (numLoadedScene <= sceneNames.Count) { numLoadedScene -= 1; }
         if (numLoadedScene > sceneNames.Count) { numLoadedScene = (numLoadedScene - 1) % sceneNames.Count; }
         Debug.Log("Load Scene  " + numLoadedScene);
-
+        if (numScene >sceneNames.Count)
+        {
+            numScene = 0;
+        }
         SceneManager.LoadScene(sceneNames[numLoadedScene]);
     }
 
@@ -45,5 +52,8 @@ public class LoadScene : ScriptableObject
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
+    public int GetScenesCount()
+    {
+        return sceneNames.Count;
+    }
 }

@@ -10,15 +10,17 @@ public class MageAnimator : MonoBehaviour
     Animator animator;
     AnimationClip startingClip;
     AnimationEvent storeSouls;
-
+    bool isStored;
     GameManager gameManager;
    
     [Inject]
     private void Init(GameManager manager)
     {
         gameManager = manager;
+       
     }
 
+   
 
     // Start is called before the first frame update
     void Start()
@@ -45,8 +47,19 @@ public class MageAnimator : MonoBehaviour
         return null;
     }
 
-    public void TakingSouls()
+   public void TakingSouls()
     {
-        gameManager.StartStoringSouls();
+        if (!isStored)
+        {
+            gameManager.StartStoringSouls();
+            isStored = true;
+        }
+       
     }
+
+    public void RunAnimation()
+    {
+        animator.SetBool("Run", true);
+    }
+
 }

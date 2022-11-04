@@ -8,14 +8,17 @@ public class TouchPanel : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDr
 {
 
     bool isClicked;
-    MageController mage;
+    
     Soul clickedSoul;
     ZombiePersone zombieClicked;
 
+    MageController mage;
+    PlayerController player;
     [Inject]
-    private void Init(MageController mageController)
+    private void Init(MageController mageController, PlayerController playerController)
     {
         mage = mageController;
+        player = playerController;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -53,6 +56,7 @@ public class TouchPanel : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDr
             Ray ray = Camera.main.ScreenPointToRay(eventData.position);
 
             clickedSoul.DragSoul(ray);
+            player.DragSoul(clickedSoul.transform);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 10000f))
@@ -60,15 +64,35 @@ public class TouchPanel : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDr
                 if (hit.transform.gameObject.CompareTag("Zombie"))
                 {                   
                     zombieClicked = hit.transform.gameObject.GetComponent<ZombiePersone>();
-                    zombieClicked.CompaireSouls(clickedSoul);
+                   
                 }
             }
+        }
+        else
+        {
+            ClickObject();
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         isClicked = false;
+        if (zombieClicked!=null)
+        {
+            zombieClicked.CompaireSouls(clickedSoul);
+            zombieClicked = null;
+            clickedSoul = null;
+        }
+        else
+        {
+            if (clickedSoul!=null)
+            {
+                clickedSoul.ReturnSoulToMage();
+                clickedSoul = null;
+            }
+           
+        }
+      
     }
 
     public void OnPointerClick(PointerEventData eventData)

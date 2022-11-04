@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709504840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.56, y: 1.85, z: 0}
+  m_LocalPosition: {x: 1.86, y: 1.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 798502488}
@@ -123,7 +123,7 @@ Transform:
   - {fileID: 436727481}
   - {fileID: 1129076523}
   m_Father: {fileID: 4757296042127128166}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1129076522
 GameObject:
@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129076522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.65, y: 2.04, z: 0}
+  m_LocalPosition: {x: -2.19, y: 2.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 798502488}
@@ -971,10 +971,11 @@ Transform:
   m_GameObject: {fileID: 8385164103656473717}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 23.69}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2012, y: 1.2012, z: 1.2012}
   m_Children:
   - {fileID: 7913311746667056818}
   - {fileID: 1542086450093320221}
+  - {fileID: 922101016860368091}
   - {fileID: 798502488}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -992,7 +993,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 35d1a3fb4faaf0b47b896efced1608a1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1012,7 +1013,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &2749990021035485844
 CapsuleCollider:
@@ -1121,3 +1122,65 @@ Transform:
   m_Father: {fileID: 4984752180394897213}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &922101016860231259
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4757296042127128166}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+      propertyPath: m_Name
+      value: Toon Vortex 01 PS
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+--- !u!4 &922101016860368091 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 52bafbdb28b22fa4e83d676bd169a82d, type: 3}
+  m_PrefabInstance: {fileID: 922101016860231259}
+  m_PrefabAsset: {fileID: 0}

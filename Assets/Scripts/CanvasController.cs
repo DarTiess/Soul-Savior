@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,10 @@ public class CanvasController : MonoBehaviour
     [SerializeField] private GameObject lost;
     [SerializeField] private Text Level;
 
+    [Header("Sliders")]
+    [SerializeField] private ProgressOnScene progressOnScene;
+    [SerializeField] private LevelsProgress levelsProgress;
+    int numLevel;
     GameManager gameManager;
 
     [Inject]
@@ -20,15 +25,25 @@ public class CanvasController : MonoBehaviour
     {
         gameManager = manager;
         gameManager.OnLevelStart += OnLevelStart;
-        gameManager.OnLevelWin += OnLevelWin;
-        gameManager.OnLevelLost += OnLevelLost;
+        gameManager.OnLateWin += OnLevelWin;
+        gameManager.OnLateLost += OnLevelLost;
+      //  gameManager.OnLevelWin += ChangeLevelValue;
+        gameManager.AddSoul += AddSouls;
+        gameManager.FreeSoul+= FreeSoul;
+      
     }
-  
+
+   
+
     private void Start()
     {
         FalsePanels();
+        numLevel = gameManager.loadScene.numScene;
         mainMenu.SetActive(true);
-        Level.text = "Level "+gameManager.loadScene.numScene.ToString();
+        Level.text = "Level "+numLevel.ToString();
+        
+        levelsProgress.SetMaxValue(gameManager.loadScene.GetScenesCount());
+        levelsProgress.SetLevel(numLevel);
     }
 
     private void OnLevelStart()
@@ -40,8 +55,10 @@ public class CanvasController : MonoBehaviour
     private void OnLevelWin()
     {
         Debug.Log("Level Win");
+       
         FalsePanels();
         win.SetActive(true);
+       
     }
 
     private void OnLevelLost()
@@ -54,7 +71,8 @@ public class CanvasController : MonoBehaviour
 
     // out to Level Manager
     public void LoadNextLevel()
-    { 
+    {
+       
         gameManager.LoadNextLevel(); 
     }
     public void LevelStart()
@@ -70,5 +88,23 @@ public class CanvasController : MonoBehaviour
         lost.SetActive(false);
     }
 
+    private void AddSouls()
+    {
+        progressOnScene.ChangeMaxValus();
+    }
+    private void FreeSoul()
+    {
+        progressOnScene.SetValues(0.7f);
+    }
+    private void ChangeLevelValue()
+    {
+        numLevel = gameManager.loadScene.numScene;
+        levelsProgress.SetLevel(numLevel);
+    }
+
+    public void RestartGame()
+    {
+        gameManager.RestartScene();
+    }
 
 }

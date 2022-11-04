@@ -42,7 +42,7 @@ public class ZombiePersone : MonoBehaviour
         animator = GetComponent<ZombieAnimator>();
        // visage = GetComponent<ZombieVisage>();
         navMesh = GetComponent<NavMeshAgent>();
-        navMesh.speed = Random.Range(0,speed);
+        navMesh.speed = Random.Range(0.35f,speed);
         _steep = 1f / _countSteepMagnet;
         _timeInSteep = _timeMagnet / _countSteepMagnet;
         rndWalk = Random.Range(1,3);
@@ -71,28 +71,39 @@ public class ZombiePersone : MonoBehaviour
             {
                 hadSoul = false;
                 mage.StoreSouls(soul.soulObj.GetComponent<Soul>());
-               // visage.LooseSoul();
-                //soul.soulObj.transform.parent = mage.transform;
+                gameManager.AddTakenSoul();
+             
+                // visage.LooseSoul();
+                return;
             });
     }
 
     public void CompaireSouls(Soul soulGet)
     {
+        if (hadSoul)
+        {  
+            soulGet.transform.DOJump(mage.transform.position, 4f, 1, 1f)
+                .OnComplete(() =>
+                {
+                    soulGet.ReturnSoulToMage();
+                });
+
+                    return;
+        }
+        soulGet.PushSoul(gameObject, _countSteepMagnet, _steep, _changeY, _timeInSteep);
+        hadSoul = true;
+      
+        navMesh.isStopped = true;
         if (soulGet.GetTypeOfSoul() == soul.soulsType)
         {
-            soulGet.PushSoul(gameObject, _countSteepMagnet , _steep, _changeY, _timeInSteep);
-           
-               hadSoul = true;
-               mage.LostSouls(soulGet);
-            navMesh.isStopped = true;
             animator.GetRightSoul();
+            gameManager.SetFreeSoul(true);
           //  visage.GetYouSoul();
         }
         else
         {
-            mage.LostSouls(soulGet);
-            navMesh.isStopped = true;
             animator.GetWrongSoul(soulGet.GetTypeOfSoul());
+            gameManager.SetFreeSoul(false);
         }
     }
 

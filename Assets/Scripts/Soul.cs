@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class Soul : MonoBehaviour
 {
     [SerializeField]private SoulsType soulsType;
-   
+    Transform storePosition;
     public void SetType(SoulsType type)
     {
         soulsType = type;
@@ -14,6 +15,11 @@ public class Soul : MonoBehaviour
     public SoulsType GetTypeOfSoul()
     {
         return soulsType;
+    }
+
+    public void SetStorePosition(Transform position)
+    {
+        storePosition = position;
     }
 
     public void DragSoul(Ray ray)
@@ -45,5 +51,12 @@ public class Soul : MonoBehaviour
         transform.position = destin.transform.position;
         transform.rotation = destin.transform.rotation;
         gameObject.SetActive(false);
+    }
+
+    public void ReturnSoulToMage()
+    {
+       
+       transform.DOJump(storePosition.position, 4f, 1, 1f);
+
     }
 }
