@@ -42,7 +42,7 @@ public class ZombiePersone : MonoBehaviour
         animator = GetComponent<ZombieAnimator>();
        // visage = GetComponent<ZombieVisage>();
         navMesh = GetComponent<NavMeshAgent>();
-        navMesh.speed = Random.Range(0.35f,speed);
+        navMesh.speed = speed;
         _steep = 1f / _countSteepMagnet;
         _timeInSteep = _timeMagnet / _countSteepMagnet;
         rndWalk = Random.Range(1,3);
@@ -66,7 +66,7 @@ public class ZombiePersone : MonoBehaviour
     {
         animator.LooseSoul();
         soul.soulObj.GetComponent<Soul>().SetType(soul.soulsType);
-        soul.soulObj.transform.DOJump(mage.transform.position, 4f, 1, 1f)
+        soul.soulObj.transform.DOJump(mage.transform.position, 4f, 1, 1.5f)
             .OnComplete(()=> 
             {
                 hadSoul = false;

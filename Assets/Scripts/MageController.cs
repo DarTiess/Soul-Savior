@@ -11,9 +11,11 @@ public class MageController : MonoBehaviour
 {
     MageAnimator mageAnimator;
     [SerializeField] private List<Soul> soulsList = new List<Soul>();
-
     [SerializeField] private List<Transform> soulsPlaces = new List<Transform>();
-    int indexPlaces = 0;
+    [SerializeField] private float levitateHeight;
+  
+    Sequence seqLevitate;
+   
 
     GameManager gameManager;
     [Inject]
@@ -29,7 +31,20 @@ public class MageController : MonoBehaviour
     void Start()
     {
         mageAnimator = GetComponent<MageAnimator>();
-        indexPlaces = 0;
+      
+       
+        seqLevitate = DOTween.Sequence();
+      
+        Levitation();
+    }
+   
+    void Levitation()
+    {
+      
+        seqLevitate.Append(transform.DOMoveY(7f, 1.5f))
+          .Append(transform.DOMoveY(4.5f, 1.5f));
+            seqLevitate.SetLoops(-1, LoopType.Yoyo); ;
+       
     }
  
     public void StoreSouls(Soul soul)
@@ -39,8 +54,9 @@ public class MageController : MonoBehaviour
             soul.gameObject.transform.position = soulsPlaces[soulsList.IndexOf(soul)].position;
             soul.gameObject.transform.rotation = soulsPlaces[soulsList.IndexOf(soul)].rotation;
         soul.SetStorePosition(soulsPlaces[soulsList.IndexOf(soul)]);
-            soul.gameObject.SetActive(false);
-            indexPlaces+=1;
+        soul.LevitateSoul();
+          //  soul.gameObject.SetActive(false);
+           
         return;
     } 
     

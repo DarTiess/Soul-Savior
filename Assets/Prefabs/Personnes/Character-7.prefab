@@ -1346,8 +1346,8 @@ MonoBehaviour:
     soulsType: 12
     soulObj: {fileID: 3186904221750926446}
   hadSoul: 1
-  speed: 1
-  _timeMagnet: 1
+  speed: 0.2
+  _timeMagnet: 1.33
   _countSteepMagnet: 32
   _changeY:
     serializedVersion: 2
@@ -1362,17 +1362,17 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.4184476
-      value: 2.5002346
-      inSlope: 1.0178462
-      outSlope: 1.0178462
+      time: 0.4054032
+      value: 0.99046403
+      inSlope: 1.1891937
+      outSlope: 1.1891937
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1.1334991
-      value: -0.012931824
+      time: 0.9708252
+      value: 0.0032997131
       inSlope: 0
       outSlope: 0
       tangentMode: 0

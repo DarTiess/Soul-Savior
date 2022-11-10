@@ -7,6 +7,13 @@ public class Soul : MonoBehaviour
 {
     [SerializeField]private SoulsType soulsType;
     Transform storePosition;
+
+    Sequence levitation;
+
+    private void Start()
+    {
+       
+    }
     public void SetType(SoulsType type)
     {
         soulsType = type;
@@ -17,9 +24,19 @@ public class Soul : MonoBehaviour
         return soulsType;
     }
 
+    public void LevitateSoul()
+    {
+        float rnd = Random.Range(0.9f, 1.2f);
+        levitation = DOTween.Sequence();
+        levitation.Append(transform.DOMoveY(4.5f, rnd))
+         .Append(transform.DOMoveY(3.0f, rnd));
+        levitation.SetLoops(-1, LoopType.Yoyo); 
+
+    }
     public void SetStorePosition(Transform position)
     {
         storePosition = position;
+        
     }
 
     public void DragSoul(Ray ray)
@@ -29,6 +46,7 @@ public class Soul : MonoBehaviour
     }
     public void PushSoul(GameObject destin, int _countSteepMagnet, float _steep, AnimationCurve _changeY, float _timeInStee)
     {
+        levitation.Kill();
         StartCoroutine(MoveSoul (destin, _countSteepMagnet, _steep, _changeY, _timeInStee));
     }
 
