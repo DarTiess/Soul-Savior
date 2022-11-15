@@ -1041,14 +1041,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa4359d9e2d7c24a842531d91ec5ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soulsList: []
   soulsPlaces:
   - {fileID: 709504841}
   - {fileID: 1129076523}
   - {fileID: 1628575727}
   - {fileID: 743044677}
   - {fileID: 436727481}
-  levitateHeight: 7
+  maxLevitateDistance: 7
+  levitateDuration: 1.5
+  runingDistance: 20
 --- !u!114 &2749990021035485842
 MonoBehaviour:
   m_ObjectHideFlags: 0

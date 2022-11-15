@@ -10,12 +10,17 @@ using DG.Tweening;
 public class MageController : MonoBehaviour
 {
     MageAnimator mageAnimator;
-    [SerializeField] private List<Soul> soulsList = new List<Soul>();
+    private List<Soul> soulsList = new List<Soul>();
     [SerializeField] private List<Transform> soulsPlaces = new List<Transform>();
-    [SerializeField] private float levitateHeight;
+    [Header("Levitate settings")]
+    [SerializeField] private float maxLevitateDistance;
+    float minLevitateDistance;
+    [SerializeField] private float levitateDuration;
   
     Sequence seqLevitate;
-   
+
+    [Header("Run back settings")]
+    [SerializeField] private float runingDistance;
 
     GameManager gameManager;
     [Inject]
@@ -34,6 +39,7 @@ public class MageController : MonoBehaviour
       
        
         seqLevitate = DOTween.Sequence();
+        minLevitateDistance = maxLevitateDistance / 2 + 1;
       
         Levitation();
     }
@@ -41,8 +47,8 @@ public class MageController : MonoBehaviour
     void Levitation()
     {
       
-        seqLevitate.Append(transform.DOMoveY(7f, 1.5f))
-          .Append(transform.DOMoveY(4.5f, 1.5f));
+        seqLevitate.Append(transform.DOMoveY(maxLevitateDistance, levitateDuration))
+          .Append(transform.DOMoveY(minLevitateDistance, levitateDuration));
             seqLevitate.SetLoops(-1, LoopType.Yoyo); ;
        
     }
@@ -54,7 +60,7 @@ public class MageController : MonoBehaviour
             soul.gameObject.transform.position = soulsPlaces[soulsList.IndexOf(soul)].position;
             soul.gameObject.transform.rotation = soulsPlaces[soulsList.IndexOf(soul)].rotation;
         soul.SetStorePosition(soulsPlaces[soulsList.IndexOf(soul)]);
-        soul.LevitateSoul();
+        soul.LevitateSoul(minLevitateDistance, minLevitateDistance-1f);
           //  soul.gameObject.SetActive(false);
            
         return;
@@ -80,7 +86,7 @@ public class MageController : MonoBehaviour
         transform.DORotateQuaternion(look, 1f)
             .OnComplete(()=> {
                 mageAnimator.RunAnimation();
-                transform.DOMove(new Vector3(transform.position.x, transform.position.y, transform.position.z +20f), 1f);
+                transform.DOMove(new Vector3(transform.position.x, transform.position.y, transform.position.z +runingDistance), 1f);
             });
 
     }

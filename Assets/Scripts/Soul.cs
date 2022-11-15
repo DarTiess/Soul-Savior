@@ -9,11 +9,9 @@ public class Soul : MonoBehaviour
     Transform storePosition;
 
     Sequence levitation;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpDuration;
 
-    private void Start()
-    {
-       
-    }
     public void SetType(SoulsType type)
     {
         soulsType = type;
@@ -24,12 +22,12 @@ public class Soul : MonoBehaviour
         return soulsType;
     }
 
-    public void LevitateSoul()
+    public void LevitateSoul(float maxLevitateDistance, float minLevitateDistance)
     {
         float rnd = Random.Range(0.9f, 1.2f);
         levitation = DOTween.Sequence();
-        levitation.Append(transform.DOMoveY(4.5f, rnd))
-         .Append(transform.DOMoveY(3.0f, rnd));
+        levitation.Append(transform.DOMoveY(maxLevitateDistance, rnd))
+         .Append(transform.DOMoveY(minLevitateDistance, rnd));
         levitation.SetLoops(-1, LoopType.Yoyo); 
 
     }
@@ -74,7 +72,7 @@ public class Soul : MonoBehaviour
     public void ReturnSoulToMage()
     {
        
-       transform.DOJump(storePosition.position, 4f, 1, 1f);
+       transform.DOJump(storePosition.position, jumpForce, 1, jumpDuration);
 
     }
 }

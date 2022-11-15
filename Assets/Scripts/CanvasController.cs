@@ -27,7 +27,6 @@ public class CanvasController : MonoBehaviour
         gameManager.OnLevelStart += OnLevelStart;
         gameManager.OnLateWin += OnLevelWin;
         gameManager.OnLateLost += OnLevelLost;
-      //  gameManager.OnLevelWin += ChangeLevelValue;
         gameManager.AddSoul += AddSouls;
         gameManager.FreeSoul+= FreeSoul;
       
@@ -68,11 +67,8 @@ public class CanvasController : MonoBehaviour
         lost.SetActive(true);
     }
   
-
-    // out to Level Manager
     public void LoadNextLevel()
     {
-       
         gameManager.LoadNextLevel(); 
     }
     public void LevelStart()

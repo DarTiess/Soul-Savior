@@ -109,3 +109,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soulsType: 0
+  jumpForce: 4
+  jumpDuration: 1

@@ -18,8 +18,6 @@ public class ProgressOnScene : MonoBehaviour
     {
         maxValues += 1;
         slider.maxValue = maxValues;
-       
-       
     }
 
     public void SetValues( float time)

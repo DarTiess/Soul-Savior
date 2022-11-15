@@ -13,11 +13,7 @@ public class ZombieVisage : MonoBehaviour
         SetStartingFace();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 
     void SetStartingFace()
     {

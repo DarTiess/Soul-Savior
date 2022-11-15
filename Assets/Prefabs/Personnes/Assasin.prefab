@@ -731,8 +731,8 @@ MonoBehaviour:
     soulObj: {fileID: 6109094445431422696}
   hadSoul: 1
   speed: 0.2
-  _timeMagnet: 1.33
-  _countSteepMagnet: 32
+  _timeMagnet: 1.05
+  _countSteepMagnet: 41
   _changeY:
     serializedVersion: 2
     m_Curve:
@@ -1211,6 +1211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soulsType: 0
+  jumpForce: 0
+  jumpDuration: 0
 --- !u!1001 &8023883539935196180
 PrefabInstance:
   m_ObjectHideFlags: 0
